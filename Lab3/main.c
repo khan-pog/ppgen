@@ -19,8 +19,8 @@ uint32_t* GPIO25PAD_BASE = 0x40014000
 uint32_t* GPIO_CTRL = (GPIO25PAD_BASE+0x0cc)
 uint32_t* SIO_BASE = 0Xd0000000
 uint32_t* REG_GPIO_OE = (SIO_BASE+0x020)
-uint32_t* REG_GPIO_OE_SET = (SIO_BASE+0x024)
-uint32_t* REG_GPIO_OE_CLR = (SIO_BASE+0x028)
+uint32_t* REG_GPIO_OE_SET = (SIO_BASE+0x024) // maybe 14
+uint32_t* REG_GPIO_OE_CLR = (SIO_BASE+0x028) // maybe 18
 
 uint32_t LED_PIN = 25
 
@@ -29,7 +29,9 @@ uint32_t LED_PIN = 25
 //GPIO25 GPIO25 functoin set to SIO
 *GPIO_CTRL = 5; //
 
-// Set the GPIO Output enable as well and that means set bit 25 of the register 
+// Set the GPIO Output enable as well and that means set bit 25 of the register
+
+uint32_t* CONTENT_OF(REG_GPIO_OE) =  (1<<LED_PIN);
 
 while ( true ) {
 
